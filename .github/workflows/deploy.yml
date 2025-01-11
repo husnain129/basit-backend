@@ -28,7 +28,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd var/www/basit-backend  
-            git pull https://github.com/husnain129/basit-backend.git
+            cd /var/www/basit-backend
+            git pull origin main
             npm install --force
             pm2 restart backend
