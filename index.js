@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const path = require("path");
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -45,6 +46,11 @@ app.get("/api/products/category/:category", (req, res) => {
     (p) => p.category.toLowerCase() === req.params.category.toLowerCase()
   );
   res.json(categoryProducts);
+});
+
+// Serve static HTML file on root route
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(port, () => {

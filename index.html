@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .container {
+        text-align: center;
+        margin-top: 50px;
+      }
+      .api-list {
+        text-align: left;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to the API Server</h1>
+      <p>This is a simple REST API server with the following endpoints:</p>
+      <div class="api-list">
+        <h2>Available Endpoints:</h2>
+        <ul>
+          <li>GET /api/users - Get all users</li>
+          <li>GET /api/users/:id - Get user by ID</li>
+          <li>GET /api/products - Get all products</li>
+          <li>GET /api/products/:id - Get product by ID</li>
+          <li>
+            GET /api/products/category/:category - Get products by category
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
