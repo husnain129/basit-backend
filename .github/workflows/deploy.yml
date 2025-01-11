@@ -18,7 +18,6 @@ jobs:
         run: |
           echo "SSH_HOST is set to: ${{ secrets.SSH_HOST }}"
           echo "SSH_USER is set to: ${{ secrets.SSH_USER }}"
-          echo "SSH_KEY is set: ${{ secrets.SSH_KEY:+Yes}}"
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
