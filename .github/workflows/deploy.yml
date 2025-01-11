@@ -1,3 +1,37 @@
+# name: Deploy Node.js App with PM2
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: "18"
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Deploy to server via SSH
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.SSH_HOST }}
+#           username: ${{ secrets.SSH_USER }}
+#           key: ${{ secrets.SSH_KEY }}
+#           script: |
+#             cd /var/www/basit-backend
+#             git pull origin main
+#             npm install --force
+#             pm2 restart backend
 name: Deploy Node.js App with PM2
 
 on:
@@ -13,22 +47,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "18"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Deploy to server via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd /var/www/basit-backend
-            git pull origin main
-            npm install --force
-            pm2 restart backend
+      # Step to debug secrets (safe echo)
+      - name: Debug Secrets
+        run: |
+          echo "SSH_HOST is set to: ${{ secrets.SSH_HOST }}"
+          echo "SSH_USER is set to: ${{ secrets.SSH_USER }}"
+          echo "Length of SSH_KEY: ${#{{ secrets.SSH_KEY }}}"
